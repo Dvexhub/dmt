@@ -13,6 +13,7 @@ const Footer = () => {
   return (
     <FooterContainer>
         <h1>Footer</h1>
+        <h1>asdfdasf</h1>
     </FooterContainer>
   )
 }
