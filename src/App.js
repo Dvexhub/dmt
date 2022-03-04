@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Header from './mycomponents/Header'
+import Superadmin from './mycomponents/Superadmin';
+import {
+  Route,
+  Routes
+} from "react-router-dom";
+import Contact from './mycomponents/Contact';
+import Footer from './mycomponents/Footer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header/>
+      <Routes>
+          <Route path='/Superadmin' element={
+            <Superadmin/>
+          }/>
+          <Route path='/Contact' element={
+            <Contact/>
+          }/>
+      </Routes>
+      <Footer/>
+    </>
   );
 }
 
