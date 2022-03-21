@@ -6,13 +6,16 @@ import {
   Routes
 } from "react-router-dom";
 import Contact from './mycomponents/Contact';
-import Footer from './mycomponents/Footer';
+import Home from './mycomponents/Home';
 
 function App() {
   return (
     <>
       <Header/>
       <Routes>
+          <Route path='/' element={
+            <Home/>
+          }/>
           <Route path='/Superadmin' element={
             <Superadmin/>
           }/>
@@ -20,7 +23,7 @@ function App() {
             <Contact/>
           }/>
       </Routes>
-      <Footer/>
+      {/* <Footer/> */}
     </>
   );
 }
