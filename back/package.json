@@ -5,9 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run dev",
-    "dev": "nodemon --config nodemon.json src/app.ts",
-    "dev:debug": "nodemon --config nodemon.json --inspect src/app.ts"
+    "start": "nodemon --exec ts-node src/app.ts"
   },
   "author": "",
   "license": "ISC",
@@ -36,6 +34,7 @@
     "pino": "^7.9.1",
     "pino-pretty": "^7.5.4",
     "touch": "^3.1.0",
+    "ts-node-dev": "^1.1.8",
     "yup": "^0.32.11"
   }
 }
