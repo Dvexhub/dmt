@@ -17,6 +17,7 @@ export async function validatePassword({
     email:UserDocument["email"];
     password:string;
 }){
+   try {
     const user = await User.findOne({email});
 
     if(!user){
@@ -28,4 +29,7 @@ export async function validatePassword({
         return false;
     }
     return omit(user, "password");
+   } catch (error) {
+       console.log("This is validate password error --"+error);
+   }
 }

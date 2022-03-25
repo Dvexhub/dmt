@@ -2,8 +2,7 @@ import Session,{SessionDocument} from '../model/session.model';
 import { UserDocument } from '../model/user.model';
 import config from 'config';
 import { LeanDocument } from 'mongoose';
-import {sign} from '../utils/jwt.utils'
-// import {Omit} from 'lodash';
+import {sign} from '../utils/jwt.utils';
 
 
 export async function createSession(userId: string, userAgent:string){
@@ -22,8 +21,12 @@ export function createAccessToken({
         | Omit<SessionDocument,"password">
         | LeanDocument<Omit<SessionDocument,"password">>;
 }){
+   try {
     const accessToken = sign(
-        {...user, session: session._id},
+        {user:{...user,user}, session: session._id},
         {expiresIn: config.get("accessTokenTtl")});
     return accessToken; //15 minutes
+   } catch (error) {
+       console.log("this is create accesstoken error --"+error);
+   }
 }

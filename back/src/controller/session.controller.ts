@@ -11,7 +11,7 @@ export async function createUserSessionHandler(req: Request,res: Response){
         const user = await validatePassword(req.body);
         if(!user){
             return res.status(401).send({error: 'Invalid credentials'})
-        }
+        }   
         //create a session
         const session = await createSession(user._id, req.get("user-agent") || "");
         // create a access token
@@ -19,15 +19,14 @@ export async function createUserSessionHandler(req: Request,res: Response){
             user,
             session,
         });
-
         //create a refresh token
         const refreshToken = sign(session,{
             expiresIn: config.get("refreshTokenTtl"), // 1 year
         })
         //send refresh and access token back
-        return res.send({accessToken,refreshToken});
+        return res.send({MyAccessToken: accessToken,MyRefreshToken:refreshToken});
     } catch (error: any) {
         log.error(error)
-        return res.status(409).send(error.message);
+        return res.status(409).send("This is sesion controller --"+error);
     }
 }
