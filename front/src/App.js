@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from './mycomponents/Header'
 import Superadmin from './mycomponents/Superadmin';
+import User from './mycomponents/User';
+import Footer from './mycomponents/Footer';
 import {
   Route,
   Routes
@@ -22,8 +24,11 @@ function App() {
           <Route path='/Contact' element={
             <Contact/>
           }/>
+           <Route path='/User' element={
+            <User/>
+          }/>
       </Routes>
-      {/* <Footer/> */}
+      <Footer/>
     </>
   );
 }
